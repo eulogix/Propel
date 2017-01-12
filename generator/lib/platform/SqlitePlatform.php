@@ -52,7 +52,7 @@ class SqlitePlatform extends DefaultPlatform
         return 1024;
     }
 
-    public function getAddTableDDL(Table $table)
+    public function getAddTableDDL(/*Table*/ $table)
     {
         $tableDescription = $table->hasDescription() ? $this->getCommentLineDDL($table->getDescription()) : '';
 
@@ -90,13 +90,13 @@ class SqlitePlatform extends DefaultPlatform
         );
     }
 
-    public function getDropPrimaryKeyDDL(Table $table)
+    public function getDropPrimaryKeyDDL(/*Table*/ $table)
     {
         // FIXME: not supported by SQLite
         return '';
     }
 
-    public function getAddPrimaryKeyDDL(Table $table)
+    public function getAddPrimaryKeyDDL(/*Table*/ $table)
     {
         // FIXME: not supported by SQLite
         return '';
@@ -113,7 +113,7 @@ class SqlitePlatform extends DefaultPlatform
         return '';
     }
 
-    public function getDropTableDDL(Table $table)
+    public function getDropTableDDL(/*Table*/ $table)
     {
         return "
 DROP TABLE IF EXISTS " . $this->quoteIdentifier($table->getName()) . ";

@@ -112,7 +112,7 @@ class MssqlSchemaParser extends BaseSchemaParser
      *
      * @param Table $table The Table model class to add columns to.
      */
-    protected function addColumns(Table $table)
+    protected function addColumns(/*Table*/ $table)
     {
         $stmt = $this->dbh->query("sp_columns '" . $table->getName() . "'");
 
@@ -156,7 +156,7 @@ class MssqlSchemaParser extends BaseSchemaParser
     /**
      * Load foreign keys for this table.
      */
-    protected function addForeignKeys(Table $table)
+    protected function addForeignKeys(/*Table*/ $table)
     {
         $database = $table->getDatabase();
 
@@ -195,7 +195,7 @@ class MssqlSchemaParser extends BaseSchemaParser
     /**
      * Load indexes for this table
      */
-    protected function addIndexes(Table $table)
+    protected function addIndexes(/*Table*/ $table)
     {
         $stmt = $this->dbh->query("sp_indexes_rowset '" . $table->getName() . "'");
 
@@ -217,7 +217,7 @@ class MssqlSchemaParser extends BaseSchemaParser
     /**
      * Loads the primary key for this table.
      */
-    protected function addPrimaryKey(Table $table)
+    protected function addPrimaryKey(/*Table*/ $table)
     {
         $stmt = $this->dbh->query("SELECT COLUMN_NAME
                         FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS

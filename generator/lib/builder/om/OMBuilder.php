@@ -342,7 +342,7 @@ abstract class OMBuilder extends DataModelBuilder
      *
      * @return string
      */
-    public function getBasePeer(Table $table)
+    public function getBasePeer(/*Table*/ $table)
     {
         $class = $table->getBasePeer();
         if ($class === null) {

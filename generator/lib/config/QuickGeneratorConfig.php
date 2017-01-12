@@ -87,7 +87,7 @@ class QuickGeneratorConfig implements GeneratorConfigInterface
      *
      * @return DataModelBuilder
      */
-    public function getConfiguredBuilder(Table $table, $type)
+    public function getConfiguredBuilder(/*Table*/ $table, $type)
     {
         $class = $this->builders[$type];
         require_once dirname(__FILE__) . '/../builder/om/' . $class . '.php';

@@ -166,7 +166,7 @@ class PgsqlSchemaParser extends BaseSchemaParser
      *
      * @throws EngineException
      */
-    protected function addColumns(Table $table, $oid, $version)
+    protected function addColumns(/*Table*/ $table, $oid, $version)
     {
         // Get the columns, types, etc.
         // Based on code from pgAdmin3 (http://www.pgadmin.org/)
@@ -349,7 +349,7 @@ class PgsqlSchemaParser extends BaseSchemaParser
     /**
      * Load foreign keys for this table.
      */
-    protected function addForeignKeys(Table $table, $oid, $version)
+    protected function addForeignKeys(/*Table*/ $table, $oid, $version)
     {
         $database = $table->getDatabase();
         $stmt = $this->dbh->prepare("SELECT
@@ -453,7 +453,7 @@ class PgsqlSchemaParser extends BaseSchemaParser
     /**
      * Load indexes for this table
      */
-    protected function addIndexes(Table $table, $oid, $version)
+    protected function addIndexes(/*Table*/ $table, $oid, $version)
     {
         $stmt = $this->dbh->prepare("SELECT
                                         DISTINCT ON(cls.relname)
@@ -504,7 +504,7 @@ class PgsqlSchemaParser extends BaseSchemaParser
     /**
      * Loads the primary key for this table.
      */
-    protected function addPrimaryKey(Table $table, $oid, $version)
+    protected function addPrimaryKey(/*Table*/ $table, $oid, $version)
     {
 
         $stmt = $this->dbh->prepare("SELECT

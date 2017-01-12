@@ -161,7 +161,7 @@ class PropelQuickBuilder
         return $script;
     }
 
-    public function getClassesForTable(Table $table, array $classTargets = null)
+    public function getClassesForTable(/*Table*/ $table, array $classTargets = null)
     {
         if (null === $classTargets) {
             $classTargets = $this->classTargets;

@@ -139,7 +139,7 @@ class Validator extends XMLElement
      *
      * @param Table $table
      */
-    public function setTable(Table $table)
+    public function setTable(/*Table*/ $table)
     {
         $this->table = $table;
     }

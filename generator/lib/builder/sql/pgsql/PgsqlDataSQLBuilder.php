@@ -31,7 +31,7 @@ class PgsqlDataSQLBuilder extends DataSQLBuilder
      *
      * @param Table $table
      */
-    public function __construct(Table $table)
+    public function __construct(/*Table*/ $table)
     {
         parent::__construct($table);
     }

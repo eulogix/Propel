@@ -67,7 +67,7 @@ class PropelSchemaValidator
         }
     }
 
-    protected function validateTableAttributes(Table $table)
+    protected function validateTableAttributes(/*Table*/ $table)
     {
         $reservedTableNames = array('table_name');
         $tableName = strtolower($table->getName());
@@ -87,7 +87,7 @@ class PropelSchemaValidator
         }
     }
 
-    protected function validateTableColumns(Table $table)
+    protected function validateTableColumns(/*Table*/ $table)
     {
         if (!$table->hasPrimaryKey() && !$table->isSkipSql()) {
             $this->errors[] = sprintf('Table "%s" does not have a primary key defined. Propel requires all tables to have a primary key.', $table->getName());

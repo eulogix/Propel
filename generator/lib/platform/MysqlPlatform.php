@@ -115,7 +115,7 @@ class MysqlPlatform extends DefaultPlatform
         return strtolower($this->getDefaultTableEngine()) == 'innodb';
     }
 
-    public function supportsForeignKeys(Table $table)
+    public function supportsForeignKeys(/*Table*/ $table)
     {
         $vendorSpecific = $table->getVendorInfoForType('mysql');
         if ($vendorSpecific->hasParameter('Type')) {
@@ -164,7 +164,7 @@ SET FOREIGN_KEY_CHECKS = 1;
      *
      * @return string
      */
-    public function getPrimaryKeyDDL(Table $table)
+    public function getPrimaryKeyDDL(/*Table*/ $table)
     {
         if ($table->hasPrimaryKey()) {
 
@@ -186,7 +186,7 @@ SET FOREIGN_KEY_CHECKS = 1;
         }
     }
 
-    public function getAddTableDDL(Table $table)
+    public function getAddTableDDL(/*Table*/ $table)
     {
         $lines = array();
 
@@ -252,7 +252,7 @@ CREATE TABLE %s
         );
     }
 
-    protected function getTableOptions(Table $table)
+    protected function getTableOptions(/*Table*/ $table)
     {
         $dbVI = $table->getDatabase()->getVendorInfoForType('mysql');
         $tableVI = $table->getVendorInfoForType('mysql');
@@ -298,7 +298,7 @@ CREATE TABLE %s
         return $tableOptions;
     }
 
-    public function getDropTableDDL(Table $table)
+    public function getDropTableDDL(/*Table*/ $table)
     {
         return "
 DROP TABLE IF EXISTS " . $this->quoteIdentifier($table->getName()) . ";
@@ -402,7 +402,7 @@ DROP TABLE IF EXISTS " . $this->quoteIdentifier($table->getName()) . ";
      *
      * @return string
      */
-    public function getDropPrimaryKeyDDL(Table $table)
+    public function getDropPrimaryKeyDDL(/*Table*/ $table)
     {
         $pattern = "
 ALTER TABLE %s DROP PRIMARY KEY;

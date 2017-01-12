@@ -151,7 +151,7 @@ class MysqlSchemaParser extends BaseSchemaParser
      *
      * @param Table $table The Table model class to add columns to.
      */
-    protected function addColumns(Table $table)
+    protected function addColumns(/*Table*/ $table)
     {
         $stmt = $this->dbh->query("SHOW FULL COLUMNS FROM `" . $table->getName() . "`");
 
@@ -298,7 +298,7 @@ class MysqlSchemaParser extends BaseSchemaParser
     /**
      * Load foreign keys for this table.
      */
-    protected function addForeignKeys(Table $table)
+    protected function addForeignKeys(/*Table*/ $table)
     {
         $database = $table->getDatabase();
 
@@ -376,7 +376,7 @@ class MysqlSchemaParser extends BaseSchemaParser
     /**
      * Load indexes for this table
      */
-    protected function addIndexes(Table $table)
+    protected function addIndexes(/*Table*/ $table)
     {
         $stmt = $this->dbh->query("SHOW INDEX FROM `" . $table->getName() . "`");
 
@@ -413,7 +413,7 @@ class MysqlSchemaParser extends BaseSchemaParser
     /**
      * Loads the primary key for this table.
      */
-    protected function addPrimaryKey(Table $table)
+    protected function addPrimaryKey(/*Table*/ $table)
     {
         $stmt = $this->dbh->query("SHOW KEYS FROM `" . $table->getName() . "`");
 
@@ -434,7 +434,7 @@ class MysqlSchemaParser extends BaseSchemaParser
      *
      * @param Table $table
      */
-    protected function addTableVendorInfo(Table $table)
+    protected function addTableVendorInfo(/*Table*/ $table)
     {
         $stmt = $this->dbh->query("SHOW TABLE STATUS LIKE '" . $table->getName() . "'");
         $row = $stmt->fetch(PDO::FETCH_ASSOC);

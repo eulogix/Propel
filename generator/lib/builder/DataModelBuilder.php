@@ -177,7 +177,7 @@ abstract class DataModelBuilder
      *
      * @param Table $table The Table which we are using to build [OM, DDL, etc.].
      */
-    public function __construct(Table $table)
+    public function __construct(/*Table*/ $table)
     {
         $this->table = $table;
     }
@@ -428,7 +428,7 @@ abstract class DataModelBuilder
      *
      * @return DataModelBuilder
      */
-    public function getNewBuilder(Table $table, $classname)
+    public function getNewBuilder(/*Table*/ $table, $classname)
     {
         $builder = new $classname($table);
         $builder->setGeneratorConfig($this);
@@ -446,7 +446,7 @@ abstract class DataModelBuilder
      *
      * @return PeerBuilder
      */
-    public function getNewPeerBuilder(Table $table)
+    public function getNewPeerBuilder(/*Table*/ $table)
     {
         return $this->getGeneratorConfig()->getConfiguredBuilder($table, 'peer');
     }
@@ -461,7 +461,7 @@ abstract class DataModelBuilder
      *
      * @return PeerBuilder
      */
-    public function getNewStubPeerBuilder(Table $table)
+    public function getNewStubPeerBuilder(/*Table*/ $table)
     {
         return $this->getGeneratorConfig()->getConfiguredBuilder($table, 'peerstub');
     }
@@ -476,7 +476,7 @@ abstract class DataModelBuilder
      *
      * @return ObjectBuilder
      */
-    public function getNewObjectBuilder(Table $table)
+    public function getNewObjectBuilder(/*Table*/ $table)
     {
         return $this->getGeneratorConfig()->getConfiguredBuilder($table, 'object');
     }
@@ -491,7 +491,7 @@ abstract class DataModelBuilder
      *
      * @return ObjectBuilder
      */
-    public function getNewStubObjectBuilder(Table $table)
+    public function getNewStubObjectBuilder(/*Table*/ $table)
     {
         return $this->getGeneratorConfig()->getConfiguredBuilder($table, 'objectstub');
     }
@@ -506,7 +506,7 @@ abstract class DataModelBuilder
      *
      * @return QueryBuilder
      */
-    public function getNewQueryBuilder(Table $table)
+    public function getNewQueryBuilder(/*Table*/ $table)
     {
         return $this->getGeneratorConfig()->getConfiguredBuilder($table, 'query');
     }
@@ -521,7 +521,7 @@ abstract class DataModelBuilder
      *
      * @return QueryBuilder
      */
-    public function getNewStubQueryBuilder(Table $table)
+    public function getNewStubQueryBuilder(/*Table*/ $table)
     {
         return $this->getGeneratorConfig()->getConfiguredBuilder($table, 'querystub');
     }
@@ -593,7 +593,7 @@ abstract class DataModelBuilder
      *
      * @param Table $table
      */
-    public function setTable(Table $table)
+    public function setTable(/*Table*/ $table)
     {
         $this->table = $table;
     }

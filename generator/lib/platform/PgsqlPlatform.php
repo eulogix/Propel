@@ -99,7 +99,7 @@ class PgsqlPlatform extends DefaultPlatform
      *
      * @return string
      */
-    public function getSequenceName(Table $table)
+    public function getSequenceName(/*Table*/ $table)
     {
         static $longNamesMap = array();
         $result = null;
@@ -123,7 +123,7 @@ class PgsqlPlatform extends DefaultPlatform
         return $result;
     }
 
-    protected function getAddSequenceDDL(Table $table)
+    protected function getAddSequenceDDL(/*Table*/ $table)
     {
         if ($table->getIdMethod() == IDMethod::NATIVE && $table->getIdMethodParameters() != null) {
             $pattern = "
@@ -136,7 +136,7 @@ CREATE SEQUENCE %s;
         }
     }
 
-    protected function getDropSequenceDDL(Table $table)
+    protected function getDropSequenceDDL(/*Table*/ $table)
     {
         if ($table->getIdMethod() == IDMethod::NATIVE && $table->getIdMethodParameters() != null) {
             $pattern = "
@@ -164,7 +164,7 @@ DROP SEQUENCE %s;
         return $ret;
     }
 
-    public function getAddSchemaDDL(Table $table)
+    public function getAddSchemaDDL(/*Table*/ $table)
     {
         $vi = $table->getVendorInfoForType('pgsql');
         if ($vi->hasParameter('schema')) {
@@ -176,7 +176,7 @@ CREATE SCHEMA %s;
         };
     }
 
-    public function getUseSchemaDDL(Table $table)
+    public function getUseSchemaDDL(/*Table*/ $table)
     {
         $vi = $table->getVendorInfoForType('pgsql');
         if ($vi->hasParameter('schema')) {
@@ -188,7 +188,7 @@ SET search_path TO %s;
         }
     }
 
-    public function getResetSchemaDDL(Table $table)
+    public function getResetSchemaDDL(/*Table*/ $table)
     {
         $vi = $table->getVendorInfoForType('pgsql');
         if ($vi->hasParameter('schema')) {
@@ -216,7 +216,7 @@ SET search_path TO public;
         return $ret;
     }
 
-    public function getAddTableDDL(Table $table)
+    public function getAddTableDDL(/*Table*/ $table)
     {
         $ret = '';
         $ret .= $this->getUseSchemaDDL($table);
@@ -265,7 +265,7 @@ COMMENT ON TABLE %s IS %s;
         return $ret;
     }
 
-    protected function getAddColumnsComments(Table $table)
+    protected function getAddColumnsComments(/*Table*/ $table)
     {
         $ret = '';
         foreach ($table->getColumns() as $column) {
@@ -289,7 +289,7 @@ COMMENT ON COLUMN %s.%s IS %s;
         }
     }
 
-    public function getDropTableDDL(Table $table)
+    public function getDropTableDDL(/*Table*/ $table)
     {
         $ret = '';
         $ret .= $this->getUseSchemaDDL($table);
@@ -303,7 +303,7 @@ DROP TABLE IF EXISTS %s CASCADE;
         return $ret;
     }
 
-    public function getPrimaryKeyName(Table $table)
+    public function getPrimaryKeyName(/*Table*/ $table)
     {
         $tableName = $table->getName();
 

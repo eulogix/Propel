@@ -210,7 +210,7 @@ class DefaultPlatform implements PropelPlatformInterface
      *
      * @return string Sequence name for this table.
      */
-    public function getSequenceName(Table $table)
+    public function getSequenceName(/*Table*/ $table)
     {
         static $longNamesMap = array();
         $result = null;
@@ -278,7 +278,7 @@ class DefaultPlatform implements PropelPlatformInterface
      *
      * @return string
      */
-    public function getDropTableDDL(Table $table)
+    public function getDropTableDDL(/*Table*/ $table)
     {
         return "
 DROP TABLE " . $this->quoteIdentifier($table->getName()) . ";
@@ -291,7 +291,7 @@ DROP TABLE " . $this->quoteIdentifier($table->getName()) . ";
      *
      * @return string
      */
-    public function getAddTableDDL(Table $table)
+    public function getAddTableDDL(/*Table*/ $table)
     {
         $tableDescription = $table->hasDescription() ? $this->getCommentLineDDL($table->getDescription()) : '';
 
@@ -423,7 +423,7 @@ DROP TABLE " . $this->quoteIdentifier($table->getName()) . ";
      *
      * @return string
      */
-    public function getPrimaryKeyName(Table $table)
+    public function getPrimaryKeyName(/*Table*/ $table)
     {
         $tableName = $table->getCommonName();
 
@@ -435,7 +435,7 @@ DROP TABLE " . $this->quoteIdentifier($table->getName()) . ";
      *
      * @return string
      */
-    public function getPrimaryKeyDDL(Table $table)
+    public function getPrimaryKeyDDL(/*Table*/ $table)
     {
         if ($table->hasPrimaryKey()) {
             return 'PRIMARY KEY (' . $this->getColumnListDDL($table->getPrimaryKey()) . ')';
@@ -449,7 +449,7 @@ DROP TABLE " . $this->quoteIdentifier($table->getName()) . ";
      *
      * @return string
      */
-    public function getDropPrimaryKeyDDL(Table $table)
+    public function getDropPrimaryKeyDDL(/*Table*/ $table)
     {
         $pattern = "
 ALTER TABLE %s DROP CONSTRAINT %s;
@@ -468,7 +468,7 @@ ALTER TABLE %s DROP CONSTRAINT %s;
      *
      * @return string
      */
-    public function getAddPrimaryKeyDDL(Table $table)
+    public function getAddPrimaryKeyDDL(/*Table*/ $table)
     {
         $pattern = "
 ALTER TABLE %s ADD %s;
@@ -487,7 +487,7 @@ ALTER TABLE %s ADD %s;
      *
      * @return string
      */
-    public function getAddIndicesDDL(Table $table)
+    public function getAddIndicesDDL(/*Table*/ $table)
     {
         $ret = '';
         foreach ($table->getIndices() as $fk) {
@@ -565,7 +565,7 @@ DROP INDEX %s;
      *
      * @return string
      */
-    public function getAddForeignKeysDDL(Table $table)
+    public function getAddForeignKeysDDL(/*Table*/ $table)
     {
         $ret = '';
         foreach ($table->getForeignKeys() as $fk) {

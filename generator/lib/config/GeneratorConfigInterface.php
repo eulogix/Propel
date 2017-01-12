@@ -21,7 +21,7 @@ interface GeneratorConfigInterface
      *
      * @return DataModelBuilder
      */
-    public function getConfiguredBuilder(Table $table, $type);
+    public function getConfiguredBuilder(/*Table*/ $table, $type);
 
     /**
      * Gets a configured Pluralizer class.

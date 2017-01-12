@@ -55,7 +55,7 @@ class Behavior extends XMLElement
      *
      * @param Table $table the table this behavior is applied to
      */
-    public function setTable(Table $table)
+    public function setTable(/*Table*/ $table)
     {
         $this->table = $table;
     }

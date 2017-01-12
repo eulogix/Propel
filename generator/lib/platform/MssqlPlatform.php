@@ -68,7 +68,7 @@ class MssqlPlatform extends DefaultPlatform
         return false;
     }
 
-    public function getDropTableDDL(Table $table)
+    public function getDropTableDDL(/*Table*/ $table)
     {
         $ret = '';
         foreach ($table->getForeignKeys() as $fk) {
@@ -110,7 +110,7 @@ END
         return $ret;
     }
 
-    public function getPrimaryKeyDDL(Table $table)
+    public function getPrimaryKeyDDL(/*Table*/ $table)
     {
         if ($table->hasPrimaryKey()) {
             $pattern = 'CONSTRAINT %s PRIMARY KEY (%s)';

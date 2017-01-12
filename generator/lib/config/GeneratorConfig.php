@@ -220,7 +220,7 @@ class GeneratorConfig implements GeneratorConfigInterface
      *
      * @return DataModelBuilder
      */
-    public function getConfiguredBuilder(Table $table, $type, $cache = true)
+    public function getConfiguredBuilder(/*Table*/ $table, $type, $cache = true)
     {
         $classname = $this->getBuilderClassname($type);
         $builder = new $classname($table);

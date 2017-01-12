@@ -101,7 +101,7 @@ ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS';
         return $ret;
     }
 
-    public function getAddTableDDL(Table $table)
+    public function getAddTableDDL(/*Table*/ $table)
     {
         $tableDescription = $table->hasDescription() ? $this->getCommentLineDDL($table->getDescription()) : '';
 
@@ -137,14 +137,14 @@ ALTER SESSION SET NLS_TIMESTAMP_FORMAT='YYYY-MM-DD HH24:MI:SS';
         return $ret;
     }
 
-    public function getAddPrimaryKeyDDL(Table $table)
+    public function getAddPrimaryKeyDDL(/*Table*/ $table)
     {
         if (is_array($table->getPrimaryKey()) && count($table->getPrimaryKey())) {
             return parent::getAddPrimaryKeyDDL($table);
         }
     }
 
-    public function getAddSequencesDDL(Table $table)
+    public function getAddSequencesDDL(/*Table*/ $table)
     {
         if ($table->getIdMethod() == "native") {
             $pattern = "
@@ -158,7 +158,7 @@ CREATE SEQUENCE %s
         }
     }
 
-    public function getDropTableDDL(Table $table)
+    public function getDropTableDDL(/*Table*/ $table)
     {
         $ret = "
 DROP TABLE " . $this->quoteIdentifier($table->getName()) . " CASCADE CONSTRAINTS;
@@ -172,7 +172,7 @@ DROP SEQUENCE " . $this->quoteIdentifier($this->getSequenceName($table)) . ";
         return $ret;
     }
 
-    public function getPrimaryKeyName(Table $table)
+    public function getPrimaryKeyName(/*Table*/ $table)
     {
         $tableName = $table->getName();
         // pk constraint name must be 30 chars at most
@@ -181,7 +181,7 @@ DROP SEQUENCE " . $this->quoteIdentifier($this->getSequenceName($table)) . ";
         return $tableName . '_PK';
     }
 
-    public function getPrimaryKeyDDL(Table $table)
+    public function getPrimaryKeyDDL(/*Table*/ $table)
     {
         if ($table->hasPrimaryKey()) {
             $pattern = 'CONSTRAINT %s PRIMARY KEY (%s)%s';

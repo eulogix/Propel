@@ -88,7 +88,7 @@ class ClassTools
      *
      * @return string
      */
-    public static function getBasePeer(Table $table)
+    public static function getBasePeer(/*Table*/ $table)
     {
         $class = $table->getBasePeer();
         if ($class === null) {
@@ -104,7 +104,7 @@ class ClassTools
      *
      * @return string
      */
-    public static function getBaseClass(Table $table)
+    public static function getBaseClass(/*Table*/ $table)
     {
         $class = $table->getBaseClass();
         if ($class === null) {
@@ -120,7 +120,7 @@ class ClassTools
      *
      * @return string
      */
-    public static function getInterface(Table $table)
+    public static function getInterface(/*Table*/ $table)
     {
         $interface = $table->getInterface();
         if ($interface === null && !$table->isReadOnly()) {
